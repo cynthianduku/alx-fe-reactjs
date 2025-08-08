@@ -1,12 +1,17 @@
-# React + Vite
+# GitHub User Search Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This React app allows users to search GitHub profiles using the GitHub API.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone the repo
+2. Run `npm install` to install dependencies
+3. Create `.env` file with your GitHub API key (optional)
+4. Start the development server with `npm run dev`
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Search for GitHub users by username
+- Display user info and profile links
+
+*Note:* Do not commit your `.env` file with secrets.
