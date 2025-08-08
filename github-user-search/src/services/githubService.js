@@ -2,7 +2,19 @@ import axios from 'axios';
 
 const API_KEY = import.meta.env.VITE_APP_GITHUB_API_KEY;
 
-const fetchAdvancedUserData = async ({ username, location, minRepos }) => {
+// Basic user fetch
+export const fetchUserData = async (username) => {
+  if (!username) {
+    throw new Error('Username is required');
+  }
+  const url = `https://api.github.com/users/${encodeURIComponent(username)}`;
+  const headers = API_KEY ? { Authorization: `token ${API_KEY}` } : {};
+  const response = await axios.get(url, { headers });
+  return response.data;
+};
+
+// Advanced user search
+export const fetchAdvancedUserData = async ({ username, location, minRepos }) => {
   let query = '';
 
   if (username) query += `${username} in:login `;
@@ -17,12 +29,7 @@ const fetchAdvancedUserData = async ({ username, location, minRepos }) => {
 
   const url = `https://api.github.com/search/users?q=${encodeURIComponent(query)}`;
 
-  const headers = API_KEY
-    ? { Authorization: `token ${API_KEY}` }
-    : {};
-
+  const headers = API_KEY ? { Authorization: `token ${API_KEY}` } : {};
   const response = await axios.get(url, { headers });
   return response.data;
 };
-
-export default fetchAdvancedUserData;

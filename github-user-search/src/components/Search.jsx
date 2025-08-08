@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import fetchAdvancedUserData from '../services/githubService';
+import { fetchUserData, fetchAdvancedUserData } from '../services/githubService';
 
 const Search = () => {
   const [username, setUsername] = useState('');
@@ -16,7 +16,15 @@ const Search = () => {
     setUsers([]);
 
     try {
-      const data = await fetchAdvancedUserData({ username, location, minRepos });
+      let data;
+      // If only username is entered, do basic user fetch
+      if (username && !location && !minRepos) {
+        const user = await fetchUserData(username);
+        data = { items: [user] }; // wrap single user in array
+      } else {
+        // Advanced search with multiple params
+        data = await fetchAdvancedUserData({ username, location, minRepos });
+      }
       setUsers(data.items);
     } catch {
       setError(true);
@@ -74,7 +82,7 @@ const Search = () => {
       </form>
 
       {loading && <p className="mt-4 text-center">Loading...</p>}
-      {error && <p className="mt-4 text-center text-red-600">Looks like we cant find the user</p>}
+      {error && <p className="mt-4 text-center text-red-600">Looks like we can't find the user</p>}
 
       <div className="mt-6 space-y-4">
         {users.length === 0 && !loading && !error && <p>No results to display.</p>}
