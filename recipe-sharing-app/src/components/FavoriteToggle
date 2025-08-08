@@ -1,0 +1,39 @@
+import React from 'react';
+import { useRecipeStore } from './recipeStore';
+
+const FavoriteToggle = ({ recipeId }) => {
+  const favorites = useRecipeStore(state => state.favorites);
+  const addFavorite = useRecipeStore(state => state.addFavorite);
+  const removeFavorite = useRecipeStore(state => state.removeFavorite);
+
+  const isFavorited = favorites.includes(recipeId);
+
+  const toggleFavorite = () => {
+    if (isFavorited) {
+      removeFavorite(recipeId);
+    } else {
+      addFavorite(recipeId);
+    }
+  };
+
+  return (
+    <button
+      onClick={toggleFavorite}
+      style={{
+        cursor: 'pointer',
+        marginLeft: '10px',
+        padding: '5px 10px',
+        borderRadius: '4px',
+        border: '1px solid #ccc',
+        backgroundColor: isFavorited ? '#ffeb3b' : '#fff',
+        fontWeight: isFavorited ? 'bold' : 'normal',
+      }}
+      aria-pressed={isFavorited}
+      aria-label={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
+    >
+      {isFavorited ? '★ Remove Favorite' : '☆ Add to Favorites'}
+    </button>
+  );
+};
+
+export default FavoriteToggle;
