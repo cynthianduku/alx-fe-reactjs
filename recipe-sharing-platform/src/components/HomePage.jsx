@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; 
 import { Link } from "react-router-dom";
 import data from "../data.json";
 
@@ -6,14 +6,23 @@ export default function HomePage() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    setRecipes(data); // Load mock data
+    setRecipes(data); 
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
-      <h1 className="text-4xl font-bold mb-8 text-center text-gray-900">
-        Recipe Sharing Platform
-      </h1>
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center mb-8">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4 sm:mb-0 text-center sm:text-left">
+          Recipe Sharing Platform
+        </h1>
+       <Link
+  to="/add-recipe"
+  className="inline-block mb-6 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+>
+  Add New Recipe
+</Link>
+
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {recipes.map((recipe) => (
