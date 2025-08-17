@@ -8,7 +8,7 @@ const validationSchema = Yup.object({
   password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
 });
 
-const FormikForm = () => {
+function formikForm() {
   return (
     <Formik
       initialValues={{ username: "", email: "", password: "" }}
@@ -42,6 +42,6 @@ const FormikForm = () => {
       </Form>
     </Formik>
   );
-};
+}
 
-export default FormikForm;
+export default formikForm;
