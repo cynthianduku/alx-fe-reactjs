@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import data from "../data.json";
 
 export default function RecipeDetail() {
   const { id } = useParams();
-  const recipe = data.find((r) => r.id === parseInt(id));
+  const [recipe, setRecipe] = useState(null);
+
+  useEffect(() => {
+    const foundRecipe = data.find((r) => r.id === parseInt(id));
+    setRecipe(foundRecipe);
+  }, [id]);
 
   if (!recipe) {
     return (
-      <div className="min-h-screen flex flex-col justify-center items-center p-6">
-        <h2 className="text-2xl font-bold mb-4 text-gray-900 text-center">
+      <div className="p-6 min-h-screen flex flex-col justify-center items-center bg-gray-50">
+        <h2 className="text-2xl font-bold mb-4 text-gray-900">
           Recipe not found
         </h2>
         <Link
           to="/"
-          className="text-blue-500 underline hover:text-blue-700 mt-2"
+          className="text-blue-500 underline hover:text-blue-700"
         >
           Go back to Home
         </Link>
@@ -23,24 +28,24 @@ export default function RecipeDetail() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-start items-center p-6 bg-white">
-      <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
+    <div className="min-h-screen flex flex-col items-center bg-gray-50 p-6">
+      <h1 className="text-4xl font-bold mb-6 text-gray-900 text-center">
         {recipe.title}
       </h1>
 
       <img
         src={recipe.image}
         alt={recipe.title}
-        className="w-full md:w-3/4 h-64 md:h-96 object-cover rounded mb-6"
+        className="w-full md:w-3/4 h-64 md:h-96 object-cover rounded mb-6 shadow-lg"
       />
 
       <p className="text-gray-800 mb-6 text-center">{recipe.summary}</p>
 
       <div className="mb-6 w-full md:w-3/4">
-        <h2 className="text-2xl font-semibold mb-3 text-center text-gray-900">
+        <h2 className="text-2xl font-semibold mb-3 text-gray-900 text-center">
           Ingredients
         </h2>
-        <ul className="list-disc list-inside space-y-1 text-gray-800 text-center">
+        <ul className="list-disc list-inside space-y-1 text-gray-700">
           {recipe.ingredients.map((ingredient, idx) => (
             <li key={idx}>{ingredient}</li>
           ))}
@@ -48,10 +53,10 @@ export default function RecipeDetail() {
       </div>
 
       <div className="mb-6 w-full md:w-3/4">
-        <h2 className="text-2xl font-semibold mb-3 text-center text-gray-900">
+        <h2 className="text-2xl font-semibold mb-3 text-gray-900 text-center">
           Instructions
         </h2>
-        <ol className="list-decimal list-inside space-y-2 text-gray-800 text-center">
+        <ol className="list-decimal list-inside space-y-2 text-gray-700">
           {recipe.instructions.map((step, idx) => (
             <li key={idx}>{step}</li>
           ))}
