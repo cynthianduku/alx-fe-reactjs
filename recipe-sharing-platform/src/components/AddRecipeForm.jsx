@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import { useNavigate } from "react-router-dom";
 
 export default function AddRecipeForm() {
@@ -30,7 +30,7 @@ export default function AddRecipeForm() {
       ingredients: ingredients.split("\n"),
       instructions: instructions.split("\n"),
       image: "/images/default.jpg",
-      summary: instructions.split("\n")[0], 
+      summary: instructions.split("\n")[0],
     };
 
     console.log("New Recipe Added:", newRecipe);
@@ -47,61 +47,68 @@ export default function AddRecipeForm() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <form
-        className="w-full max-w-lg bg-white p-6 rounded shadow-md"
+        className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-2xl font-bold mb-6 text-center text-gray-900">
+        <h1 className="text-3xl font-bold mb-6 text-center text-gray-900">
           Add New Recipe
         </h1>
 
-        {/* Title Input */}
-        <label className="block mb-2 font-semibold text-gray-700">Title</label>
-        <input
-          type="text"
-          className={`w-full p-2 mb-4 border rounded ${
-            errors.title ? "border-red-500" : "border-gray-300"
-          }`}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        {errors.title && <p className="text-red-500 mb-2">{errors.title}</p>}
+        {/* Title */}
+        <div className="mb-4">
+          <label htmlFor="title" className="block mb-2 font-semibold text-gray-700">
+            Recipe Title
+          </label>
+          <input
+            id="title"
+            type="text"
+            className={`w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400 ${
+              errors.title ? "border-red-500" : "border-gray-300"
+            }`}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          {errors.title && <p className="text-red-500 mt-1 text-sm">{errors.title}</p>}
+        </div>
 
-        {/* Ingredients Textarea */}
-        <label className="block mb-2 font-semibold text-gray-700">
-          Ingredients (one per line)
-        </label>
-        <textarea
-          className={`w-full p-2 mb-4 border rounded ${
-            errors.ingredients ? "border-red-500" : "border-gray-300"
-          }`}
-          value={ingredients}
-          onChange={(e) => setIngredients(e.target.value)}
-          rows={5}
-        />
-        {errors.ingredients && (
-          <p className="text-red-500 mb-2">{errors.ingredients}</p>
-        )}
+        {/* Ingredients */}
+        <div className="mb-4">
+          <label htmlFor="ingredients" className="block mb-2 font-semibold text-gray-700">
+            Ingredients (one per line)
+          </label>
+          <textarea
+            id="ingredients"
+            rows={5}
+            className={`w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400 ${
+              errors.ingredients ? "border-red-500" : "border-gray-300"
+            }`}
+            value={ingredients}
+            onChange={(e) => setIngredients(e.target.value)}
+          />
+          {errors.ingredients && <p className="text-red-500 mt-1 text-sm">{errors.ingredients}</p>}
+        </div>
 
-        {/* Instructions Textarea */}
-        <label className="block mb-2 font-semibold text-gray-700">
-          Instructions (one per line)
-        </label>
-        <textarea
-          className={`w-full p-2 mb-4 border rounded ${
-            errors.instructions ? "border-red-500" : "border-gray-300"
-          }`}
-          value={instructions}
-          onChange={(e) => setInstructions(e.target.value)}
-          rows={5}
-        />
-        {errors.instructions && (
-          <p className="text-red-500 mb-2">{errors.instructions}</p>
-        )}
+        {/* Instructions */}
+        <div className="mb-4">
+          <label htmlFor="instructions" className="block mb-2 font-semibold text-gray-700">
+            Instructions (one per line)
+          </label>
+          <textarea
+            id="instructions"
+            rows={5}
+            className={`w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400 ${
+              errors.instructions ? "border-red-500" : "border-gray-300"
+            }`}
+            value={instructions}
+            onChange={(e) => setInstructions(e.target.value)}
+          />
+          {errors.instructions && <p className="text-red-500 mt-1 text-sm">{errors.instructions}</p>}
+        </div>
 
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded transition"
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded transition-colors"
         >
           Add Recipe
         </button>
