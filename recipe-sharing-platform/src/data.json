@@ -3,18 +3,61 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "/images/spaghetti-carbonara.jpg"
+    "image": "/images/spaghetti-carbonara.jpg",
+    "ingredients": [
+      "200g spaghetti",
+      "100g pancetta",
+      "2 large eggs",
+      "50g Pecorino cheese",
+      "Black pepper"
+    ],
+    "instructions": [
+      "Boil spaghetti until al dente.",
+      "Fry pancetta until crispy.",
+      "Beat eggs with cheese and pepper.",
+      "Combine pasta with pancetta and remove from heat.",
+      "Quickly mix in egg mixture and serve immediately."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
-    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
-    "image": "/images/chicken-tikka-masala.jpg"
+    "summary": "Chunks of grilled chicken cooked in a smooth buttery & creamy tomato-based gravy.",
+    "image": "/images/chicken-tikka-masala.jpg",
+    "ingredients": [
+      "500g chicken breast",
+      "1 cup yogurt",
+      "2 tsp garam masala",
+      "1 onion",
+      "2 cloves garlic",
+      "200ml tomato puree",
+      "100ml cream"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt and spices.",
+      "Grill or bake chicken until cooked.",
+      "Sauté onion and garlic, add tomato puree and cream.",
+      "Add chicken to sauce and simmer for 10 minutes.",
+      "Serve hot with rice or naan."
+    ]
   },
   {
     "id": 3,
     "title": "Avocado Toast",
     "summary": "Toasted bread topped with mashed avocado, a pinch of salt, and optional chili flakes.",
-    "image": "/images/avocado-toast.jpg"
+    "image": "/images/avocado-toast.jpg",
+    "ingredients": [
+      "2 slices of bread",
+      "1 ripe avocado",
+      "Salt to taste",
+      "Chili flakes (optional)",
+      "Olive oil"
+    ],
+    "instructions": [
+      "Toast the bread slices.",
+      "Mash avocado and season with salt and chili flakes.",
+      "Spread avocado on toast.",
+      "Drizzle with olive oil and serve immediately."
+    ]
   }
 ]
