@@ -7,10 +7,13 @@ const fetchPosts = async () => {
 }
 
 export default function PostsComponent() {
-  const { data, error, isLoading, isError, refetch } = useQuery({
+  const { data, error, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
     staleTime: 5000,
+    cacheTime: 1000 * 60 * 5,
+    refetchOnWindowFocus: true,
+    keepPreviousData: true,
   })
 
   if (isLoading) return <p>Loading posts...</p>
@@ -23,7 +26,7 @@ export default function PostsComponent() {
         onClick={() => refetch()}
         className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
       >
-        Refetch Posts
+        {isFetching ? 'Refreshing...' : 'Refetch Posts'}
       </button>
       <ul className="space-y-2">
         {data.slice(0, 10).map((post) => (
