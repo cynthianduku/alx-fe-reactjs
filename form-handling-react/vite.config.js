@@ -12,8 +12,7 @@ export default defineConfig({
             '@babel/preset-react',
             {
               runtime: 'automatic',
-              // ⬇️ Add this to support JSX in .js files
-              development: true
+              development: true,
             },
           ],
         ],
@@ -24,5 +23,9 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+  },
+  esbuild: {
+    loader: 'jsx', 
+    include: /src\/.*\.js$/, 
   },
 });
