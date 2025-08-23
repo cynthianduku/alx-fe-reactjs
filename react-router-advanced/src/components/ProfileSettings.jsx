@@ -1,3 +1,3 @@
 export default function ProfileSettings() {
-  return <p>This is the Profile Settings page.</p>;
+  return <p>Profile Settings Page</p>;
 }

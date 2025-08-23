@@ -1,22 +1,13 @@
-import { Routes, Route, Link, useParams } from 'react-router-dom';
-import ProfileDetails from './ProfileDetails';
-import ProfileSettings from './ProfileSettings';
+import { Outlet, Link } from 'react-router-dom';
 
 export default function Profile() {
-  const { id } = useParams();
-
   return (
     <div>
-      <h2>Profile Page {id ? `(User ${id})` : ''}</h2>
+      <h2>Profile Page</h2>
       <nav>
-        <Link to="details">Details</Link> |{" "}
-        <Link to="settings">Settings</Link>
+        <Link to="details">Details</Link> | <Link to="settings">Settings</Link>
       </nav>
-
-      <Routes>
-        <Route path="details" element={<ProfileDetails />} />
-        <Route path="settings" element={<ProfileSettings />} />
-      </Routes>
+      <Outlet />
     </div>
   );
 }
